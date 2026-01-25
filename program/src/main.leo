@@ -1,4 +1,4 @@
-program private_lending_credit9.aleo {
+program private_lending_credit4.aleo {
 
     @noupgrade
     async constructor() {}
@@ -114,7 +114,9 @@ program private_lending_credit9.aleo {
             repaid: new_repaid,
             due_time: loan.due_time,
             created: loan.created,
-            active: is_done ? false : true,
+            active: is_done ? false :
+tr
+ue,
             loan_type: is_done ? 2u8 : 1u8 // 2 = completed if paid off
         };
         
@@ -231,8 +233,7 @@ program private_lending_credit9.aleo {
             active: true,
             loan_type: 1u8
         };
-        
-        return (part1, part2);
+return (part1, part2);
     }
 
     // 8. SWAP - Transfer loan to another borrower
@@ -354,7 +355,7 @@ program private_lending_credit9.aleo {
     transition accept_public_offer(offer: Loan, current_time: u64) -> Loan {
         // Check this is a public offer
         assert_eq(offer.owner, offer.lender); // Still owned by lender
-        assert_eq(offer.loan_type, 7u8);      // Must be public offer
+assert_eq(offer.loan_type, 7u8);      // Must be public offer
         assert_eq(offer.active, false);
         
         let absolute_due: u64 = current_time + offer.due_time;
